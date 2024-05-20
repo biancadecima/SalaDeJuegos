@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
-import { User } from '../../user';
+import { LoginService } from '../../services/login.service';
+//import { User } from '../../user';
 
 
 @Component({
@@ -14,11 +16,13 @@ import { User } from '../../user';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-  user!: User;
+  //user!: User;
+  email!: string;
+  password!:string;
   logsCol: any[]=[];
-  countLogs:number = 0;
+  //countLogs:number = 0;
 
-  constructor(private firestore: Firestore, private router: Router){}
+  constructor(private auth:Auth, private firestore: Firestore, private router: Router){}
 
   GoTo(path: string){
     this.router.navigate([path]);
@@ -26,19 +30,29 @@ export class LogInComponent {
 
   Logs(){
     let col = collection(this.firestore, 'logs');
-    addDoc(col, {date: new Date(), "user": this.user})
+    addDoc(col, {date: new Date(), "user": this.email})
   }
 
-  LogIn(){ //
-    
-  }
+  /*async LogIn(): Promise<void> { //
+    try {
+      const userCredential = await signInWithEmailAndPassword(this.auth, this.email, this.password)
+        if (userCredential.user){
+          this.Logs();
+          this.GoTo('/home');
+        }
+    }catch(error: any){
+      console.log(error.code);
+    }
+  }*/
 
-  GetLogs(){
+  
+
+  GetLogs(){// te trae todos los logs, en realidad no necesito esto (ahora)
     let col = collection(this.firestore, 'logs');
     const obs = collectionData(col);
     obs.subscribe((response)=>{
       this.logsCol = response;
-      this.countLogs = this.logsCol.length;
+     //this.countLogs = this.logsCol.length;
     })
   }
 }

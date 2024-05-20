@@ -247,3 +247,7 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+.colored-toast.swal2-icon-error{ 
+	background-color: red !important;
+}

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Auth, signOut } from '@angular/fire/auth';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -11,5 +12,11 @@ import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private auth:Auth){}
 
+  CloseSession(){
+    signOut(this.auth).then(()=>{
+// se rutea al login
+    })
+  }
 }
