@@ -3,9 +3,9 @@
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Iniciar sesión</h1>
-			<input [(ngModel)]="email" name="email" placeholder="Email" />
-			<input [(ngModel)]="password" name="password" placeholder="Password" />
-			<a href="#">acceso rápido</a>
+			<input [(ngModel)]="user.email" name="email" placeholder="Email" />
+			<input [(ngModel)]="user.password" name="password" placeholder="Password" />
+			<a  [(ngModel)]="user.email" type="submit" (click)="DirectAccess()">acceso rápido</a>
 			<button (click) = "LogIn()">Iniciar sesión</button>
 		</form>
 	</div>

@@ -1,3 +1,5 @@
+
+
 *{
   margin: 0;
   padding: 0;
@@ -49,16 +51,7 @@ nav .wrapper{
 .nav-links .mobile-item{
   display: none;
 }
-.nav-links .drop-menu{
-  position: absolute;
-  background: #242526;
-  width: 180px;
-  line-height: 45px;
-  top: 85px;
-  opacity: 0;
-  visibility: hidden;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
-}
+
 .nav-links li:hover .drop-menu,
 .nav-links li:hover .mega-box{
   transition: all 0.3s ease;
@@ -66,13 +59,7 @@ nav .wrapper{
   opacity: 1;
   visibility: visible;
 }
-.drop-menu li a{
-  width: 100%;
-  display: block;
-  padding: 0 0 0 15px;
-  font-weight: 400;
-  border-radius: 0px;
-}
+
 .mega-box{
   position: absolute;
   left: 0;
@@ -196,31 +183,27 @@ nav .wrapper{
   .nav-links .mobile-item:hover{
     background: #3A3B3C;
   }
-  .content .row .mega-links{
-    border-left: 0px;
-    padding-left: 15px;
-  }
-  .row .mega-links li{
-    margin: 0;
-  }
-  .content .row header{
-    font-size: 19px;
-  }
+
 }
 nav input{
   display: none;
 }
 
-.body-text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  padding: 0 30px;
+
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns */
+  grid-gap: 15px; /* Spacing between cards */
+  margin: 20px auto; /* Center the grid */
 }
-.body-text div{
-  font-size: 45px;
-  font-weight: 600;
+
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.card-juego {
+  width: 200px; /* Adjust as needed */}

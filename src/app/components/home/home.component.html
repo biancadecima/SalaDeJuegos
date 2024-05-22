@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <nav>
     <div class="wrapper">
       <div class="logo"><a href="#">Logo</a></div>
@@ -8,7 +9,34 @@
         <li><a routerLink="/about-me" routerLinkActive="active-route">Sobre nosotros</a></li>
         <li><a routerLink="/log-in" routerLinkActive="active-route">Iniciar sesión</a></li>
         <li><a routerLink="/sign-up" routerLinkActive="active-route">Registrarse</a></li>
+        <span *ngIf="currentUser$ | async as user">
+          <i class="fas fa-user-circle"></i>
+          {{ user.displayName ? user.displayName : user.email }}
+        </span>
       </ul>
       <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </div>
   </nav>
+
+<body>
+  <div class="container py-5 h-100">
+    <div class="card-grid">
+      <div class="row">
+        <div class="col">
+          <mat-card class="card-juego d-flex flex-column justify-content-center">
+            <mat-card-header>
+              <mat-card-title>Ahorcado</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <img src="src/app/resources/ahorcado.jpeg" class="card-img-top"
+                   (mouseenter)="highlightButton($event)" (mouseleave)="unhighlightButton($event)">
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" class="btn-jugar w-100" (click)="ahorcado()">Jugar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        </div>
+    </div>
+  </div>
+</body>

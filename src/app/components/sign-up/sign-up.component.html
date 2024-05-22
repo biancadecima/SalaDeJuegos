@@ -3,9 +3,9 @@
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Crear usuario</h1>
-			<input [(ngModel)]="newEmail" name="newEmail" placeholder="Email" />
-         	<input [(ngModel)]="newUsername" name="newUsername" placeholder="Username" />
-			<input [(ngModel)]="newPassword" name="newPassword" placeholder="Password" />
+			<input [(ngModel)]="user.email" name="newEmail" placeholder="Email" />
+         	<input [(ngModel)]="user.username" name="newUsername" placeholder="Username" />
+			<input [(ngModel)]="user.password" name="newPassword" placeholder="Password" />
 			<button (click) = "SignUp()">Registrarse</button>
 			
 		</form>
