@@ -1,1 +1,44 @@
-<p>about-me works!</p>
+<body class="vh-100 gradient-custom d-flex flex-column justify-content-between">
+
+  <nav>
+    <div class="wrapper">
+      <div class="logo"><img src="https://firebasestorage.googleapis.com/v0/b/playroom-hosting.appspot.com/o/icon%2Ffavicon-coin.ico?alt=media&token=87c9c419-542d-43c4-a62a-3a418b20c804s" alt="chomba"></div>
+      <!--<input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">-->
+      <ul class="nav-links">
+        <ng-container *ngIf="currentUser$ | async as user; else notUser">
+            <li><a routerLink="/home" routerLinkActive="active-route">Home</a></li>
+            
+            <!--<li><button class="fa-solid fa-right-from-bracket" (click)="SignOut()"></button></li>-->
+            <li class="fa-solid fa-right-from-bracket" (click)="SignOut()"></li>
+            <li><i class="fas fa-user-circle"></i>
+            {{ user.email }}</li>
+        </ng-container>
+        <ng-template #notUser>
+          <li><a routerLink="/home" routerLinkActive="active-route">Home</a></li>
+          <li><a routerLink="/log-in" routerLinkActive="active-route">Iniciar sesión</a></li>
+          <li><a routerLink="/sign-up" routerLinkActive="active-route">Registrarse</a></li>
+        </ng-template>
+        
+      </ul>
+    </div>
+  </nav>
+
+    <div class="card-container">
+    <div class="card">
+        <img src="https://firebasestorage.googleapis.com/v0/b/playroom-hosting.appspot.com/o/aboutme%2Fme.jpeg?alt=media&token=09b60103-8057-4a81-971d-bd4c9bca98c4"/>
+        <div>
+            <h2>Bianca Décima</h2>
+            <h3>Juego propio</h3>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+              when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </p>
+            <!--<button (click)="onClickWs($event)">Ir Juego propio</button>-->
+        </div>
+    </div>
+    <input type="button" [value]="btnVolver" [class]="['button-container']" (click)="onClick($event)"/>
+    
+</div>
+</body>
