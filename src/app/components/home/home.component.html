@@ -1,42 +1,83 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <nav>
     <div class="wrapper">
-      <div class="logo"><a href="#">Logo</a></div>
+      <div class="logo"><img src="https://firebasestorage.googleapis.com/v0/b/playroom-hosting.appspot.com/o/icon%2Ffavicon-coin.ico?alt=media&token=87c9c419-542d-43c4-a62a-3a418b20c804s" alt="chomba"></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">
-        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-        <li><a routerLink="/about-me" routerLinkActive="active-route">Sobre nosotros</a></li>
-        <li><a routerLink="/log-in" routerLinkActive="active-route">Iniciar sesión</a></li>
-        <li><a routerLink="/sign-up" routerLinkActive="active-route">Registrarse</a></li>
-        <span *ngIf="currentUser$ | async as user">
-          <i class="fas fa-user-circle"></i>
-          {{ user.displayName ? user.displayName : user.email }}
-        </span>
+        <ng-container *ngIf="currentUser$ | async as user; else notUser">
+            <li><a routerLink="/about-me" routerLinkActive="active-route">Sobre nosotros</a></li>
+            
+            <!--<li><button class="fa-solid fa-right-from-bracket" (click)="SignOut()"></button></li>-->
+            <li class="fa-solid fa-right-from-bracket" (click)="SignOut()"></li>
+            <li><i class="fas fa-user-circle"></i>
+            {{ user.email }}</li>
+        </ng-container>
+        <ng-template #notUser>
+          <li><a routerLink="/about-me" routerLinkActive="active-route">Sobre nosotros</a></li>
+          <li><a routerLink="/log-in" routerLinkActive="active-route">Iniciar sesión</a></li>
+          <li><a routerLink="/sign-up" routerLinkActive="active-route">Registrarse</a></li>
+        </ng-template>
+        
       </ul>
-      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+
+      <app-chat *ngIf="currentUser$ | async as user"></app-chat>
     </div>
   </nav>
 
-<body>
+
+  <body class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
-    <div class="card-grid">
-      <div class="row">
-        <div class="col">
-          <mat-card class="card-juego d-flex flex-column justify-content-center">
-            <mat-card-header>
-              <mat-card-title>Ahorcado</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <img src="src/app/resources/ahorcado.jpeg" class="card-img-top"
-                   (mouseenter)="highlightButton($event)" (mouseleave)="unhighlightButton($event)">
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="primary" class="btn-jugar w-100" (click)="ahorcado()">Jugar</button>
-            </mat-card-actions>
-          </mat-card>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="card bg-dark text-white card-welcome" style="border-radius: 1rem;">
+        <div class="card-body p-4 text-center">
+          <h2 class="fw-bold mb- text-uppercase">SALA DE JUEGOS</h2>
         </div>
+      </div>
+
+      <div class="col-12 col-md-8 col-lg-10">
+        
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <div class="card d-flex flex-column justify-content-center card-juego">
+              <img src="https://firebasestorage.googleapis.com/v0/b/playroom-hosting.appspot.com/o/homeImages%2Fahorcado.jpeg?alt=media&token=5aacd8a4-86f7-4b11-bd59-327e084aa8e2" class="card-img-top" (mouseenter)="highlightButton($event)" (mouseleave)="unhighlightButton($event)">
+              <div class="card-body text-center">
+                <h5 class="card-title">Ahorcado</h5>
+                <button class="btn btn-outline-light btn-lg px-5 btn-jugar w-100" (click)="ahorcado()">Jugar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card d-flex flex-column justify-content-center card-juego">
+              <img [src]="imgMayorMenor" class="card-img-top" (mouseenter)="highlightButton($event)" (mouseleave)="unhighlightButton($event)">
+              <div class="card-body text-center">
+                <h5 class="card-title">Mayor o Menor</h5>
+                <button class="btn btn-outline-light btn-lg px-5 btn-jugar w-100" (click)="mayorOMenor()">Jugar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card d-flex flex-column justify-content-center card-juego">
+              <img [src]="imgPreguntados" class="card-img-top" (mouseenter)="highlightButton($event)" (mouseleave)="unhighlightButton($event)">
+              <div class="card-body text-center">
+                <h5 class="card-title">Preguntados</h5>
+                <button class="btn btn-outline-light btn-lg px-5 btn-jugar w-100" (click)="preguntados()">Jugar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card d-flex flex-column justify-content-center card-juego">
+              <img [src]="imgTortugas" class="card-img-top" (mouseenter)="highlightButton($event)" (mouseleave)="unhighlightButton($event)">
+              <div class="card-body text-center">
+                <h5 class="card-title">Juego propio</h5>
+                <button class="btn btn-outline-light btn-lg px-5 btn-jugar w-100" (click)="turtleRace()">Jugar</button>
+              </div>
+            </div>
+          </div>
         </div>
+
+      </div>
     </div>
   </div>
-</body>
+  </body>

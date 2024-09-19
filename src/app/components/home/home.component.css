@@ -1,8 +1,12 @@
-
+.gradient-custom {
+	background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
 
 *{
-  margin: 0;
-  padding: 0;
+ /* margin: 0;
+  padding: 0;*/
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
@@ -11,24 +15,22 @@ nav{
   z-index: 99;
   width: 100%;
   
-  background: #242526;
+  background: #f2f2f2;
 }
 nav .wrapper{
   position: relative;
   max-width: 1300px;
   padding: 0px 30px;
-  height: 70px;
+  /*height: 70px;*/
   line-height: 70px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.wrapper .logo a{
-  color: #f2f2f2;
-  font-size: 30px;
-  font-weight: 600;
-  text-decoration: none;
+.wrapper .logo img{
+  width: 50px;
+  height: 50px;
 }
 .wrapper .nav-links{
   display: inline-flex;
@@ -37,7 +39,7 @@ nav .wrapper{
   list-style: none;
 }
 .nav-links li a{
-  color: #f2f2f2;
+  color: #242526;
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
@@ -59,7 +61,7 @@ nav .wrapper{
   opacity: 1;
   visibility: visible;
 }
-
+/*
 .mega-box{
   position: absolute;
   left: 0;
@@ -104,7 +106,7 @@ nav .wrapper{
   color: #d9d9d9;
   font-size: 17px;
   display: block;
-}
+}*/
 .row .mega-links li a:hover{
   color: #f2f2f2;
 }
@@ -192,18 +194,38 @@ nav input{
 
 
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four columns */
-  grid-gap: 15px; /* Spacing between cards */
-  margin: 20px auto; /* Center the grid */
+
+
+.btn-jugar {
+  transition: all 0.3s ease;
 }
 
-.col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.btn-jugar:hover,
+.card-body.highlight .btn-jugar {
+background-color: #ffc107;
+color: #000000;
+transform: scale(1.05);
 }
 
 .card-juego {
-  width: 200px; /* Adjust as needed */}
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-juego:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-welcome {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-welcome:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-welcome {
+  overflow: hidden;
+}

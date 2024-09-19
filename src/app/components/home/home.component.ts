@@ -6,13 +6,13 @@ import Swal from 'sweetalert2';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'firebase/auth';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { ChatComponent } from '../chat/chat.component';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, MatCardModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, ChatComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -20,6 +20,10 @@ export class HomeComponent{
 
   //@Output()
   currentUser$: Observable<User | null>;
+  imgAhorcado: string = "";
+  imgMayorMenor:string = "";
+  imgPreguntados: string = "";
+  imgTortugas: string = "";
 
   constructor(private router:Router, private AuthService:AuthService){
     this.currentUser$ = this.AuthService.getCurrentUser();
@@ -37,19 +41,19 @@ export class HomeComponent{
   }
 
   ahorcado() {
-    this.router.navigate(['home/ahorcado']);
+    this.router.navigate(['/ahorcado']);
   }
 
   mayorOMenor() {
-    this.router.navigate(['home/mayoromenor']);
+    this.router.navigate(['/mayormenor']);
   }
 
   preguntados() {
-    this.router.navigate(['home/preguntados']);
+    this.router.navigate(['/preguntados']);
   }
 
-  ws() {
-    this.router.navigate(['home/word-scramble']);
+  turtleRace() {
+    this.router.navigate(['/turtle-race']);
   }
 
 
