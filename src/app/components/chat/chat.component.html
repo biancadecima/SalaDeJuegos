@@ -1,0 +1,32 @@
+<div *ngIf="loggedUser && !showChat" class="chatIconContainer" (click)="getMessages()" (click)="showChat=true" >
+    <div class="chatNotification" *ngIf="newMessages"></div>
+    <i class="fa solid fa-comment-dots chatIcon"></i>
+  </div> 
+  
+  <div class="card text-center cardContainer" *ngIf="loggedUser && showChat">
+    <div class="card-header" (click)="showChat=false">
+      CHAT
+      <div class="closeIcon" (click)="showChat=false">X</div>
+    </div>
+
+    <div class="card-body" >
+      <div id="messagesContainer" #messagesContainer class="messagesContainer h-100">
+        <p *ngFor="let message of messages" class="msj p-2"
+           [ngClass]="(loggedUser.uid==message.emisor) ? 'enviado' : 'recibido'" [style.background-color]="getChatColor(message.emisor)"> 
+          <span class="username">{{ message.username }} </span>
+          <span class="message">{{ message.text }}</span> 
+          <span class="time">{{ message.time }}</span> 
+        </p>
+      </div>
+    </div>
+  
+    <form class="card-footer text-muted input-group" (ngSubmit)="sendMessage()">
+      <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="newMessage" [ngModelOptions]="{standalone: true}" (keydown.enter)="sendMessage()">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa regular fa-paper-plane icon"></i> 
+        </button>
+      </div>
+    </form>
+  </div>
+
